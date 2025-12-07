@@ -2,7 +2,9 @@ package org.example;
 
 class Pet {
     private Long id;
-    private String name, birthDate, type;
+    private String name;
+    private String birthDate;
+    private String type;
     private Long ownerId;
 
     public Pet(String name, String birthDate, String type, Long ownerId) {

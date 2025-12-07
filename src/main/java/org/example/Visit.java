@@ -2,7 +2,8 @@ package org.example;
 
 class Visit {
     private Long id;
-    private String date, description;
+    private String date;
+    private String description;
     private Long petId;
 
     public Visit(String date, String description, Long petId) {

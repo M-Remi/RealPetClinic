@@ -1,14 +1,19 @@
 package org.example;
-import java.io.*;
 import java.util.*;
 import java.util.List;
+
+import java.util.logging.Logger;
 public class PetManagementApp {
+    static Logger logger = Logger.getLogger(PetManagementApp.class.getName());
+
     private static Scanner scanner = new Scanner(System.in);
     private static OwnerService ownerService = new OwnerService();
     private static PetService petService = new PetService();
     private static VisitService visitService = new VisitService();
     private static DataStorage storage = new DataStorage();
     public static void main(String[] args) {
+
+
         // Load data from file
         storage.loadData(ownerService, petService, visitService);
 
@@ -22,28 +27,29 @@ public class PetManagementApp {
                 case 3: manageVisits(); break;
                 case 4: viewReports(); break;
                 case 5: saveAndExit(); return;
-                default: System.out.println("Invalid choice!");
+                default: logger.info ("Invalid choice!");
             }
         }
     }
 
     private static void displayMainMenu() {
-        System.out.println("\n=== PET CLINIC MANAGEMENT SYSTEM ===");
-        System.out.println("1. Manage Owners");
-        System.out.println("2. Manage Pets");
-        System.out.println("3. Manage Visits");
-        System.out.println("4. View Reports");
-        System.out.println("5. Save & Exit");
+        logger.info("\n=== PET CLINIC MANAGEMENT SYSTEM ===");
+        logger.info ("1. Manage Owners");
+        logger.info("2. Manage Pets");
+        logger.info("3. Manage Visits");
+        logger.info("4. View Reports");
+        logger.info("5. Save & Exit");
     }
 
     private static void manageOwners() {
         while (true) {
-            System.out.println("\n--- Owner Management ---");
-            System.out.println("1. Add Owner  2. View All  3. Search  4. Update  5. Delete  6. Back");
+            logger.info("\n--- Owner Management ---");
+            logger.info("1. Add Owner  2. View All  3. Search  4. Update  5. Delete  6. Back");
             int choice = getIntInput("Choice: ");
 
             if (choice == 6) break;
             switch (choice) {
+                default: Default(); break;
                 case 1: addOwner(); break;
                 case 2: viewAllOwners(); break;
                 case 3: searchOwner(); break;
@@ -53,8 +59,14 @@ public class PetManagementApp {
         }
     }
 
+    private static void Default() {
+
+
+    }
+
+
     private static void addOwner() {
-        System.out.println("\n--- Add New Owner ---");
+        logger.info ("\n--- Add New Owner ---");
         String firstName = getInput("First Name: ");
         String lastName = getInput("Last Name: ");
         String address = getInput("Address: ");
@@ -62,16 +74,16 @@ public class PetManagementApp {
 
         Owner owner = new Owner(firstName, lastName, address, phone);
         ownerService.save(owner);
-        System.out.println("Owner added successfully! ID: " + owner.getId());
+        logger.info ("Owner added successfully! ID: " + owner.getId());
     }
 
     private static void viewAllOwners() {
         List<Owner> owners = ownerService.findAll();
         if (owners.isEmpty()) {
-            System.out.println("No owners found.");
+            logger.info ("No owners found.");
         } else {
             for (Owner owner : owners) {
-                System.out.println(owner);
+                logger.info(owner.toString());
             }
         }
     }
@@ -80,10 +92,10 @@ public class PetManagementApp {
         String lastName = getInput("Enter last name to search: ");
         List<Owner> owners = ownerService.findByLastName(lastName);
         if (owners.isEmpty()) {
-            System.out.println("No owners found.");
+            logger.info ("No owners found.");
         } else {
             for (Owner owner : owners) {
-                System.out.println(owner);
+               logger.info (owner.toString());
             }
         }
     }
@@ -92,29 +104,30 @@ public class PetManagementApp {
         long id = getLongInput("Enter Owner ID: ");
         Owner owner = ownerService.findById(id);
         if (owner == null) {
-            System.out.println("Owner not found!");
+           logger.info ("Owner not found!");
             return;
         }
-        System.out.println("Current: " + owner);
+        logger.info ("Current: " + owner);
         owner.setAddress(getInput("New Address (or press Enter to keep): ", owner.getAddress()));
         owner.setPhone(getInput("New Phone (or press Enter to keep): ", owner.getPhone()));
         ownerService.save(owner);
-        System.out.println("Owner updated successfully!");
+        logger.info ("Owner updated successfully!");
     }
     private static void deleteOwner() {
         long id = getLongInput("Enter Owner ID to delete: ");
         ownerService.delete(id);
-        System.out.println("Owner deleted successfully!");
+        logger.info ("Owner deleted successfully!");
     }
 
     private static void managePets() {
         while (true) {
-            System.out.println("\n--- Pet Management ---");
-            System.out.println("1. Add Pet  2. View All  3. View by Owner  4. Update  5. Delete  6. Back");
+            logger.info ("\n--- Pet Management ---");
+            logger.info ("1. Add Pet  2. View All  3. View by Owner  4. Update  5. Delete  6. Back");
             int choice = getIntInput("Choice: ");
 
             if (choice == 6) break;
             switch (choice) {
+                default:Default(); break;
                 case 1: addPet(); break;
                 case 2: viewAllPets(); break;
                 case 3: viewPetsByOwner(); break;
@@ -125,11 +138,11 @@ public class PetManagementApp {
     }
 
     private static void addPet() {
-        System.out.println("\n--- Add New Pet ---");
+        logger.info ("\n--- Add New Pet ---");
         long ownerId = getLongInput("Owner ID: ");
         Owner owner = ownerService.findById(ownerId);
         if (owner == null) {
-            System.out.println("Owner not found!");
+            logger.info ("Owner not found!");
             return;
         }
 
@@ -139,15 +152,15 @@ public class PetManagementApp {
 
         Pet pet = new Pet(name, birthDate, type, ownerId);
         petService.save(pet);
-        System.out.println("Pet added successfully! ID: " + pet.getId());
+        logger.info ("Pet added successfully! ID: " + pet.getId());
     }
     private static void viewAllPets() {
         List<Pet> pets = petService.findAll();
         if (pets.isEmpty()) {
-            System.out.println("No pets found.");
+           logger.info ("No pets found.");
         } else {
             for (Pet pet : pets) {
-                System.out.println(pet);
+                logger.info (pet.toString());
             }
         }
     }
@@ -156,10 +169,10 @@ public class PetManagementApp {
         long ownerId = getLongInput("Enter Owner ID: ");
         List<Pet> pets = petService.findByOwnerId(ownerId);
         if (pets.isEmpty()) {
-            System.out.println("No pets found for this owner.");
+            logger.info ("No pets found for this owner.");
         } else {
             for (Pet pet : pets) {
-                System.out.println(pet);
+               logger.info (pet.toString());
             }
         }
     }
@@ -168,29 +181,30 @@ public class PetManagementApp {
         long id = getLongInput("Enter Pet ID: ");
         Pet pet = petService.findById(id);
         if (pet == null) {
-            System.out.println("Pet not found!");
+            logger.info ("Pet not found!");
             return;
         }
-        System.out.println("Current: " + pet);
+        logger.info("Current: " + pet);
         pet.setName(getInput("New Name (or press Enter to keep): ", pet.getName()));
         pet.setType(getInput("New Type (or press Enter to keep): ", pet.getType()));
         petService.save(pet);
-        System.out.println("Pet updated successfully!");
+        logger.info("Pet updated successfully!");
     }
 
     private static void deletePet() {
         long id = getLongInput("Enter Pet ID to delete: ");
         petService.delete(id);
-        System.out.println("Pet deleted successfully!");
+        logger.info("Pet deleted successfully!");
     }
     private static void manageVisits() {
         while (true) {
-            System.out.println("\n--- Visit Management ---");
-            System.out.println("1. Add Visit  2. View All  3. View by Pet  4. Delete  5. Back");
+            logger.info("\n--- Visit Management ---");
+            logger.info("1. Add Visit  2. View All  3. View by Pet  4. Delete  5. Back");
             int choice = getIntInput("Choice: ");
 
             if (choice == 5) break;
             switch (choice) {
+                default:Default(); break;
                 case 1: addVisit(); break;
                 case 2: viewAllVisits(); break;
                 case 3: viewVisitsByPet(); break;
@@ -200,11 +214,11 @@ public class PetManagementApp {
     }
 
     private static void addVisit() {
-        System.out.println("\n--- Add New Visit ---");
+        logger.info("\n--- Add New Visit ---");
         long petId = getLongInput("Pet ID: ");
         Pet pet = petService.findById(petId);
         if (pet == null) {
-            System.out.println("Pet not found!");
+            logger.info("Pet not found!");
             return;
         }
 
@@ -213,16 +227,16 @@ public class PetManagementApp {
 
         Visit visit = new Visit(date, description, petId);
         visitService.save(visit);
-        System.out.println("Visit added successfully! ID: " + visit.getId());
+        logger.info("Visit added successfully! ID: " + visit.getId());
     }
 
     private static void viewAllVisits() {
         List<Visit> visits = visitService.findAll();
         if (visits.isEmpty()) {
-            System.out.println("No visits found.");
+            logger.info("No visits found.");
         } else {
             for (Visit visit : visits) {
-                System.out.println(visit);
+                logger.info(visit.toString());
             }
         }
     }
@@ -232,10 +246,10 @@ public class PetManagementApp {
         long petId = getLongInput("Enter Pet ID: ");
         List<Visit> visits = visitService.findByPetId(petId);
         if (visits.isEmpty()) {
-            System.out.println("No visits found for this pet.");
+            logger.info("No visits found for this pet.");
         } else {
             for (Visit visit : visits) {
-                System.out.println(visit);
+                logger.info(visit.toString());
             }
         }
     }
@@ -243,28 +257,28 @@ public class PetManagementApp {
     private static void deleteVisit() {
         long id = getLongInput("Enter Visit ID to delete: ");
         visitService.delete(id);
-        System.out.println("Visit deleted successfully!");
+        logger.info("Visit deleted successfully!");
     }
 
     private static void viewReports() {
-        System.out.println("\n=== REPORTS ===");
-        System.out.println("Total Owners: " + ownerService.findAll().size());
-        System.out.println("Total Pets: " + petService.findAll().size());
-        System.out.println("Total Visits: " + visitService.findAll().size());
+        logger.info("\n=== REPORTS ===");
+        logger.info("Total Owners: " + ownerService.findAll().size());
+        logger.info("Total Pets: " + petService.findAll().size());
+        logger.info("Total Visits: " + visitService.findAll().size());
     }
 
     private static void saveAndExit() {
         storage.saveData(ownerService, petService, visitService);
-        System.out.println("Data saved. Goodbye!");
+        logger.info("Data saved. Goodbye!");
     }
 
     private static String getInput(String prompt) {
-        System.out.print(prompt);
+        logger.info(prompt);
         return scanner.nextLine().trim();
     }
 
     private static String getInput(String prompt, String defaultValue) {
-        System.out.print(prompt);
+        logger.info(prompt);
         String input = scanner.nextLine().trim();
         return input.isEmpty() ? defaultValue : input;
     }
@@ -272,10 +286,10 @@ public class PetManagementApp {
     private static int getIntInput(String prompt) {
         while (true) {
             try {
-                System.out.print(prompt);
+                logger.info(prompt);
                 return Integer.parseInt(scanner.nextLine().trim());
             } catch (NumberFormatException e) {
-                System.out.println("Invalid number!");
+                logger.info("Invalid number!");
             }
         }
     }
@@ -283,10 +297,10 @@ public class PetManagementApp {
     private static long getLongInput(String prompt) {
         while (true) {
             try {
-                System.out.print(prompt);
+                logger.info(prompt);
                 return Long.parseLong(scanner.nextLine().trim());
             } catch (NumberFormatException e) {
-                System.out.println("Invalid number!");
+                logger.info("Invalid number!");
             }
         }
     }

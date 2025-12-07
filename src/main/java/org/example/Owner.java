@@ -1,8 +1,13 @@
 package org.example;
 
+
 class Owner {
+
     private Long id;
-    private String firstName, lastName, address, phone;
+    private String firstName;
+    private String lastName;
+    private String address;
+    private String phone;
 
     public Owner(String firstName, String lastName, String address, String phone) {
         this.firstName = firstName; this.lastName = lastName;
