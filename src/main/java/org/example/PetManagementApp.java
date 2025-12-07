@@ -42,25 +42,28 @@ public class PetManagementApp {
     }
 
     private static void manageOwners() {
+        final String a="Choice:";
+
         while (true) {
             logger.info("\n--- Owner Management ---");
             logger.info("1. Add Owner  2. View All  3. Search  4. Update  5. Delete  6. Back");
-            int choice = getIntInput("Choice: ");
+            int choice = getIntInput(a  );
 
             if (choice == 6) break;
             switch (choice) {
-                default: Default(); break;
+
                 case 1: addOwner(); break;
                 case 2: viewAllOwners(); break;
                 case 3: searchOwner(); break;
                 case 4: updateOwner(); break;
                 case 5: deleteOwner(); break;
+                default: defaultAction(); break;
             }
         }
     }
 
-    private static void Default() {
-
+    private static void defaultAction() {
+        // left empty on purpose
 
     }
 
@@ -83,7 +86,8 @@ public class PetManagementApp {
             logger.info ("No owners found.");
         } else {
             for (Owner owner : owners) {
-                logger.info(owner.toString());
+                String s=owner.toString();
+                logger.info(s);
             }
         }
     }
@@ -95,7 +99,8 @@ public class PetManagementApp {
             logger.info ("No owners found.");
         } else {
             for (Owner owner : owners) {
-               logger.info (owner.toString());
+                String s=owner.toString();
+               logger.info (s);
             }
         }
     }
@@ -107,7 +112,8 @@ public class PetManagementApp {
            logger.info ("Owner not found!");
             return;
         }
-        logger.info ("Current: " + owner);
+        String s="Current: " + owner;
+        logger.info (s);
         owner.setAddress(getInput("New Address (or press Enter to keep): ", owner.getAddress()));
         owner.setPhone(getInput("New Phone (or press Enter to keep): ", owner.getPhone()));
         ownerService.save(owner);
@@ -127,12 +133,13 @@ public class PetManagementApp {
 
             if (choice == 6) break;
             switch (choice) {
-                default:Default(); break;
+
                 case 1: addPet(); break;
                 case 2: viewAllPets(); break;
                 case 3: viewPetsByOwner(); break;
                 case 4: updatePet(); break;
                 case 5: deletePet(); break;
+                default:defaultAction(); break;
             }
         }
     }
@@ -160,7 +167,8 @@ public class PetManagementApp {
            logger.info ("No pets found.");
         } else {
             for (Pet pet : pets) {
-                logger.info (pet.toString());
+                String s=pet.toString();
+                logger.info (s);
             }
         }
     }
@@ -172,7 +180,8 @@ public class PetManagementApp {
             logger.info ("No pets found for this owner.");
         } else {
             for (Pet pet : pets) {
-               logger.info (pet.toString());
+                String s=pet.toString();
+               logger.info (s);
             }
         }
     }
@@ -184,7 +193,8 @@ public class PetManagementApp {
             logger.info ("Pet not found!");
             return;
         }
-        logger.info("Current: " + pet);
+        String s="Current: " + pet;
+        logger.info(s);
         pet.setName(getInput("New Name (or press Enter to keep): ", pet.getName()));
         pet.setType(getInput("New Type (or press Enter to keep): ", pet.getType()));
         petService.save(pet);
@@ -204,11 +214,12 @@ public class PetManagementApp {
 
             if (choice == 5) break;
             switch (choice) {
-                default:Default(); break;
+
                 case 1: addVisit(); break;
                 case 2: viewAllVisits(); break;
                 case 3: viewVisitsByPet(); break;
                 case 4: deleteVisit(); break;
+                default:defaultAction(); break;
             }
         }
     }
@@ -236,7 +247,8 @@ public class PetManagementApp {
             logger.info("No visits found.");
         } else {
             for (Visit visit : visits) {
-                logger.info(visit.toString());
+                String s=visit.toString();
+                logger.info(s);
             }
         }
     }
@@ -249,7 +261,8 @@ public class PetManagementApp {
             logger.info("No visits found for this pet.");
         } else {
             for (Visit visit : visits) {
-                logger.info(visit.toString());
+                String s=visit.toString();
+                logger.info(s);
             }
         }
     }
@@ -262,9 +275,18 @@ public class PetManagementApp {
 
     private static void viewReports() {
         logger.info("\n=== REPORTS ===");
-        logger.info("Total Owners: " + ownerService.findAll().size());
-        logger.info("Total Pets: " + petService.findAll().size());
-        logger.info("Total Visits: " + visitService.findAll().size());
+        int a= ownerService.findAll().size();
+        int b= petService.findAll().size();
+        int c=visitService.findAll().size();
+
+        var aa="Total Owners: " +a;
+        var bb="Total Pets: " + b;
+        var cc="Total Pets: " + c;
+
+
+        logger.info(aa);
+        logger.info(bb);
+        logger.info(cc);
     }
 
     private static void saveAndExit() {
