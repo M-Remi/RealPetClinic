@@ -188,7 +188,6 @@ class Owner {
         }
         logger.info("All tasks processed");
     }
-
     public double solveComplexFunction(double x) {
 
         logger.info ("Starting computation...");
@@ -313,7 +312,6 @@ class Owner {
         logger.info(message);
         return finalResult;
     }
-
     public double calculateLoan(double principal, double annualRate, int years) {
 
         logger.info("Starting loan calculation...");
@@ -432,7 +430,6 @@ class Owner {
 
         return monthlyPayment;
     }
-
     public void sortArray() {
 
         // Line 1–5: Input validation
@@ -543,7 +540,6 @@ class Owner {
 
         logger.info("Sorting complete.");
     }
-
     public void demoStructures() {
 
         String message;
