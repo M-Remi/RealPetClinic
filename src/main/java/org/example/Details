@@ -10,4 +10,7 @@
 *** 5 Long method code smell in Pet Class
 *** Method Names are:handleOrder,solveComplexFunction,calculateLoan,demoStructures,sortArray
 
-** Total Long method= 20
+*** 5 Long method code smell in PetManagementApp
+*** Method Names are:handleOrder,solveComplexFunction,calculateLoan,demoStructures,sortArray
+
+** Total Long method= 25
