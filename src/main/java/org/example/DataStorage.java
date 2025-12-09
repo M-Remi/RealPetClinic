@@ -212,6 +212,37 @@ class DataStorage {
 
             // End of ridiculous method
             logger.info ("Order handled successfully!");
+
+        double pricePerUnit1 = 10.0;
+        double discount1 = quantity > 10 ? 0.1 : 0.0;
+        double finalPrice1 = (pricePerUnit * quantity) * (1 - discount);
+        m="Final price: " + finalPrice;
+
+        double z=pricePerUnit1 +discount1 +finalPrice1;
+
+        logger.info (m);
+        String[] tasks = {"Write Report", "Send Email", "Backup Files"};
+        for (String task : tasks) {
+            m="Starting task: " + task;
+            logger.info(m);
+            try {
+                // Simulate task processing
+                Thread.sleep(300);
+                if (task.equals("Send Email")) {
+                    throw new RuntimeException("Email server not responding");
+                }
+                m="Task completed successfully: " + task;
+                logger.info(m);
+            } catch (InterruptedException e) {
+                m="Task interrupted: " + task;
+                logger.warning(m);
+                Thread.currentThread().interrupt();
+            } catch (Exception e) {
+                m="Error processing task " + task + ": " + e.getMessage();
+                logger.severe(m);
+            }
+        }
+        logger.info("All tasks processed");
         }
 
     public double solveComplexFunction(double x) {
