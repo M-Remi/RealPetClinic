@@ -571,6 +571,7 @@ class DataStorage {
 
     public void demoStructures() {
 
+        String message;
         // Line 1–10: Start + ArrayList initialization
         logger.info("Starting data structure demo...");
         List<String> list = new ArrayList<>();
@@ -583,7 +584,8 @@ class DataStorage {
 
         // Line 11–20: Iterate ArrayList
         for (String item : list) {
-            logger.info("List item: " + item);
+            message="List item: " + item;
+            logger.info(message);
         }
         logger.info("Finished printing ArrayList.");
 
@@ -597,7 +599,8 @@ class DataStorage {
 
         // Line 31–40: Iterate HashMap
         for (Map.Entry<Integer, String> entry : map.entrySet()) {
-            logger.info("Key: " + entry.getKey() + ", Value: " + entry.getValue());
+            message="Key: " + entry.getKey() + ", Value: " + entry.getValue();
+            logger.info(message);
         }
         logger.info("Finished printing HashMap.");
 
@@ -610,7 +613,8 @@ class DataStorage {
         logger.info("HashSet created.");
 
         for (String s : set) {
-            logger.info("Set element: " + s);
+            message="Set element: " + s;
+            logger.info(message);
         }
 
         // Line 51–60: Queue initialization
@@ -622,7 +626,8 @@ class DataStorage {
         logger.info("Queue initialized.");
 
         while (!queue.isEmpty()) {
-            logger.info("Queue poll: " + queue.poll());
+            message="Queue poll: " + queue.poll();
+            logger.info(message);
         }
 
         // Line 61–70: Stack initialization
@@ -633,7 +638,8 @@ class DataStorage {
         logger.info("Stack initialized.");
 
         while (!stack.isEmpty()) {
-            logger.info("Stack pop: " + stack.pop());
+            message="Stack pop: " + stack.pop();
+            logger.info(message);
         }
 
         // Line 71–80: LinkedList operations
@@ -646,7 +652,8 @@ class DataStorage {
         logger.info("LinkedList created.");
 
         for (String s : linkedList) {
-            logger.info("LinkedList value: " + s);
+            message="LinkedList value: " + s;
+            logger.info(message);
         }
 
         // Line 81–90: TreeMap initialization
@@ -658,7 +665,8 @@ class DataStorage {
         logger.info("TreeMap created and sorted automatically.");
 
         for (Map.Entry<String, Integer> entry : treeMap.entrySet()) {
-            logger.info("TreeMap entry: " + entry.getKey() + " = " + entry.getValue());
+            message="TreeMap entry: " + entry.getKey() + " = " + entry.getValue();
+            logger.info(message);
         }
 
         // Line 91–100: Final steps
