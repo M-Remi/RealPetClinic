@@ -1,7 +1,7 @@
 *** 5 Long method code smell in Data Storage class
 *** Method Names are:handleOrder,solveComplexFunction,calculateLoan,demoStructures,sortArray
 
-*** 5 Long method code smell in PetManagementApp Class
+*** 5 Long method code smell in Owner Class
 *** Method Names are:handleOrder,solveComplexFunction,calculateLoan,demoStructures,sortArray
 
 ** Total Long method= 10
