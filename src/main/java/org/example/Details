@@ -7,4 +7,7 @@
 *** 5 Long method code smell in OwnerService Class
 *** Method Names are:handleOrder,solveComplexFunction,calculateLoan,demoStructures,sortArray
 
-** Total Long method= 15
+*** 5 Long method code smell in Pet Class
+*** Method Names are:handleOrder,solveComplexFunction,calculateLoan,demoStructures,sortArray
+
+** Total Long method= 20
