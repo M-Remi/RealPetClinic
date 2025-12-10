@@ -4,7 +4,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 class DataStorage {
     Logger logger = Logger.getLogger(getClass().getName());
-String message="";
+    String message = "";
 
     private static final String OWNERS_FILE = "owners.txt";
     private static final String PETS_FILE = "pets.txt";
@@ -17,7 +17,7 @@ String message="";
             saveVisits(visitService);
             logger.info("Data saved to files.");
         } catch (IOException e) {
-            String messa="Error saving data: " + e.getMessage();
+            String messa = "Error saving data: " + e.getMessage();
             logger.log(Level.SEVERE, messa);
         }
     }
@@ -29,7 +29,7 @@ String message="";
             loadVisits(visitService);
             logger.info("Data loaded from files.");
         } catch (IOException e) {
-            logger.log( Level.SEVERE, "No existing data found. Starting fresh.");
+            logger.log(Level.SEVERE, "No existing data found. Starting fresh.");
         }
     }
 
@@ -103,84 +103,60 @@ String message="";
     }
 
 // High Complexity
-public void complexIfElse(int a, int b, int c) {
-    if (a > 0) {
-        logger.info("A positive");
-        if (b > 0) {
-            logger.info("B positive");
-            if (c > 0) {
-                logger.info("C positive");
-            } else if (c == 0) {
-                logger.info("C zero");
-            } else {
-                logger.info("C negative");
-            }
-        } else if (b == 0) {
-            logger.info("B zero");
+
+    public void complexLoops(int[] arr, int c, int d, boolean flag) {
+        // +1
+
+        if (c < 10) logger.info("C < 10");                   // +1
+        if (d == 0) logger.info("D == 0");                   // +1
+        if (flag) logger.info("Flag true");                  // +1
+
+        if (c > d) {                                         // +1
+            logger.info("A > B");
         } else {
-            logger.info("B negative");
+            logger.info("A <= B");
         }
-    } else {
-        if (a == 0) {
-            logger.info("A zero");
+
+        if (d > c) {                                         // +1
+            logger.info("B > C");
         } else {
-            logger.info("A negative");
+            logger.info("B <= C");
         }
-    }
-}
-public void complexLoops(int[] arr, int c, int d, boolean flag) {
-                      // +1
 
-    if (c < 10) logger.info("C < 10");                   // +1
-    if (d == 0) logger.info("D == 0");                   // +1
-    if (flag) logger.info("Flag true");                  // +1
+        if (c > d) {                                         // +1
+            logger.info("C > D");
+        } else {
+            logger.info("C <= D");
+        }
 
-    if (c > d) {                                         // +1
-        logger.info("A > B");
-    } else {
-        logger.info("A <= B");
-    }
+        if ((c % 2 == 0) && (d % 2 == 0)) {                  // +1 (&& adds 1)
+            logger.info("A and B even");
+        }
 
-    if (d > c) {                                         // +1
-        logger.info("B > C");
-    } else {
-        logger.info("B <= C");
-    }
+        switch (c) {                                         // +3 (3 cases = 3 paths)
+            case 1:
+                logger.info("A = 1");
+                break;
+            case 2:
+                logger.info("A = 2");
+                break;
+            case 3:
+                logger.info("A = 3");
+                break;
+            default:
+                logger.info("A other");
+        }
 
-    if (c > d) {                                         // +1
-        logger.info("C > D");
-    } else {
-        logger.info("C <= D");
-    }
+        // Two looping conditions (each adds 1 to CC)
+        for (int i = 0; i < 1; i++) {                        // +1
+            logger.info("Loop 1");
+        }
 
-    if ((c % 2 == 0) && (d % 2 == 0)) {                  // +1 (&& adds 1)
-        logger.info("A and B even");
-    }
-
-       switch (c) {                                         // +3 (3 cases = 3 paths)
-        case 1:
-            logger.info("A = 1");
-            break;
-        case 2:
-            logger.info("A = 2");
-            break;
-        case 3:
-            logger.info("A = 3");
-            break;
-        default:
-            logger.info("A other");
-    }
-
-    // Two looping conditions (each adds 1 to CC)
-    for (int i = 0; i < 1; i++) {                        // +1
-        logger.info("Loop 1");
-    }
-
-    while (flag) {                                      // +1
-        logger.info("Unreachable loop but increases complexity");
-    }
+        while (flag) {                                      // +1
+            logger.info("Unreachable loop but increases complexity");
+        }
         for (int i = 0; i < arr.length; i++) {
-            message="Outer loop i=" + i;
+            message = "Outer loop i=" + i;
             logger.info(message);
             if (arr[i] % 2 == 0) {
                 logger.info("Even number");
@@ -189,7 +165,7 @@ public void complexLoops(int[] arr, int c, int d, boolean flag) {
             }
 
             for (int j = 0; j < arr.length; j++) {
-                message="Inner loop j=" + j;
+                message = "Inner loop j=" + j;
                 logger.info(message);
                 if (arr[j] > arr[i]) {
                     logger.info("arr[j] greater");
@@ -201,29 +177,53 @@ public void complexLoops(int[] arr, int c, int d, boolean flag) {
             }
         }
     }
-public void complexSwitch(String command) {
-        switch (command) {
-            case "start":
-                logger.info("Starting...");
+
+
+    public void complexMethodA(int x, int y, int z, boolean f1, boolean f2) {
+
+        if (x > 0) logger.info("x > 0");                 // +1
+        if (y > 0) logger.info("y > 0");                 // +1
+        if (z > 0) logger.info("z > 0");                 // +1
+        if (f1) logger.info("f1 true");                  // +1
+        if (f2) logger.info("f2 true");                  // +1
+
+        if (x > y) {                                     // +1
+            logger.info("x > y");
+        } else {
+            logger.info("x <= y");
+        }
+
+        if (y > z) {                                     // +1
+            logger.info("y > z");
+        } else {
+            logger.info("y <= z");
+        }
+
+        if ((x % 2 == 0) && (y % 3 == 0)) {              // +1
+            logger.info("x even AND y mod 3 == 0");
+        }
+
+        if ((z % 2 == 1) || (x < 5)) {                   // +1
+            logger.info("z odd OR x < 5");
+        }
+
+        switch (x) {                                     // +3
+            case 1:
+                logger.info("x=1");
                 break;
-            case "stop":
-                logger.info("Stopping...");
+            case 2:
+                logger.info("x=2");
                 break;
-            case "pause":
-                logger.info("Pausing...");
-                break;
-            case "resume":
-                logger.info("Resuming...");
-                break;
-            case "restart":
-                logger.info("Restarting...");
-                break;
-            case "status":
-                logger.info("Status...");
+            case 3:
+                logger.info("x=3");
                 break;
             default:
-                logger.warning("Unknown command!");
+                logger.info("x other");
         }
+
+        for (int i = 0; i < 1; i++) logger.info("loop"); // +1
+        while (f2) {
+        }                                 // +1
     }
 
 
