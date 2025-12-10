@@ -4,6 +4,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 class DataStorage {
     Logger logger = Logger.getLogger(getClass().getName());
+String message="";
 
     private static final String OWNERS_FILE = "owners.txt";
     private static final String PETS_FILE = "pets.txt";
@@ -129,7 +130,8 @@ public void complexIfElse(int a, int b, int c) {
 }
 public void complexLoops(int[] arr) {
         for (int i = 0; i < arr.length; i++) {
-            logger.info("Outer loop i=" + i);
+            message="Outer loop i=" + i;
+            logger.info(message);
             if (arr[i] % 2 == 0) {
                 logger.info("Even number");
             } else {
@@ -137,7 +139,8 @@ public void complexLoops(int[] arr) {
             }
 
             for (int j = 0; j < arr.length; j++) {
-                logger.info("Inner loop j=" + j);
+                message="Inner loop j=" + j;
+                logger.info(message);
                 if (arr[j] > arr[i]) {
                     logger.info("arr[j] greater");
                 } else if (arr[j] == arr[i]) {
@@ -202,9 +205,11 @@ public int complexReturn(int x, int y) {
     }
 public boolean complexBoolean(int[][] matrix, int target) {
         for (int i = 0; i < matrix.length; i++) {
-            logger.info("Row " + i);
+            message="Row " + i;
+            logger.info(message);
             for (int j = 0; j < matrix[i].length; j++) {
-                logger.info("Col " + j);
+                message="Col " + j;
+                logger.info(message);
 
                 int value = matrix[i][j];
 
@@ -212,7 +217,8 @@ public boolean complexBoolean(int[][] matrix, int target) {
                         (value < target && j % 3 == 0) ||
                         (value > target && (i + j) % 5 == 0))
                 {
-                    logger.info("Condition triggered at (" + i + "," + j + ")");
+                    message="Condition triggered at (" + i + "," + j + ")";
+                    logger.info(message);
                     return true;
                 }
             }
