@@ -19,4 +19,7 @@
 *** 5 Long method code smell in Visit
 *** Method Names are:handleOrder,solveComplexFunction,calculateLoan,demoStructures,sortArray
 
-** Total Long method= 35
+*** 5 Long method code smell in VisitService
+*** Method Names are:handleOrder,solveComplexFunction,calculateLoan,demoStructures,sortArray
+
+** Total Long method= 40
