@@ -128,7 +128,57 @@ public void complexIfElse(int a, int b, int c) {
         }
     }
 }
-public void complexLoops(int[] arr) {
+public void complexLoops(int[] arr, int c, int d, boolean flag) {
+                      // +1
+
+    if (c < 10) logger.info("C < 10");                   // +1
+    if (d == 0) logger.info("D == 0");                   // +1
+    if (flag) logger.info("Flag true");                  // +1
+
+    if (a > b) {                                         // +1
+        logger.info("A > B");
+    } else {
+        logger.info("A <= B");
+    }
+
+    if (b > c) {                                         // +1
+        logger.info("B > C");
+    } else {
+        logger.info("B <= C");
+    }
+
+    if (c > d) {                                         // +1
+        logger.info("C > D");
+    } else {
+        logger.info("C <= D");
+    }
+
+    if ((a % 2 == 0) && (b % 2 == 0)) {                  // +1 (&& adds 1)
+        logger.info("A and B even");
+    }
+
+       switch (a) {                                         // +3 (3 cases = 3 paths)
+        case 1:
+            logger.info("A = 1");
+            break;
+        case 2:
+            logger.info("A = 2");
+            break;
+        case 3:
+            logger.info("A = 3");
+            break;
+        default:
+            logger.info("A other");
+    }
+
+    // Two looping conditions (each adds 1 to CC)
+    for (int i = 0; i < 1; i++) {                        // +1
+        logger.info("Loop 1");
+    }
+
+    while (flag) {                                      // +1
+        logger.info("Unreachable loop but increases complexity");
+    }
         for (int i = 0; i < arr.length; i++) {
             message="Outer loop i=" + i;
             logger.info(message);
