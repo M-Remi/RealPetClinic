@@ -135,13 +135,13 @@ public void complexLoops(int[] arr, int c, int d, boolean flag) {
     if (d == 0) logger.info("D == 0");                   // +1
     if (flag) logger.info("Flag true");                  // +1
 
-    if (a > b) {                                         // +1
+    if (c > d) {                                         // +1
         logger.info("A > B");
     } else {
         logger.info("A <= B");
     }
 
-    if (b > c) {                                         // +1
+    if (d > c) {                                         // +1
         logger.info("B > C");
     } else {
         logger.info("B <= C");
@@ -153,11 +153,11 @@ public void complexLoops(int[] arr, int c, int d, boolean flag) {
         logger.info("C <= D");
     }
 
-    if ((a % 2 == 0) && (b % 2 == 0)) {                  // +1 (&& adds 1)
+    if ((c % 2 == 0) && (d % 2 == 0)) {                  // +1 (&& adds 1)
         logger.info("A and B even");
     }
 
-       switch (a) {                                         // +3 (3 cases = 3 paths)
+       switch (c) {                                         // +3 (3 cases = 3 paths)
         case 1:
             logger.info("A = 1");
             break;
