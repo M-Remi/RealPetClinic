@@ -300,6 +300,55 @@ class DataStorage {
 
         return "done";
     }
+    public boolean complexMethodC(int a, int b, int c, boolean flag) {
+
+        if (a > 10) logger.info(">10");                  // +1
+        if (b > 20) logger.info(">20");                  // +1
+        if (c > 30) logger.info(">30");                  // +1
+        if (a < 0) logger.info("<0");                    // +1
+        if (b < 0) logger.info("<0");                    // +1
+
+        if (b < c) logger.info("<0");
+        if (b < a) logger.info("<0");
+        if (b < 5) logger.info("<0");
+
+        if ((a > b) && (b > c)) logger.info("chain");    // +1
+        if ((a < b) || (c == a)) logger.info("or");      // +1
+
+        if (a == b) {                                    // +1
+            logger.info("a=b");
+        } else {
+            logger.info("a!=b");
+        }
+
+        if (b == c) {                                    // +1
+            logger.info("b=c");
+        } else {
+            logger.info("b!=c");
+        }
+
+        switch (c % 4) {                                 // +3
+            case 0: logger.info("0"); break;
+            case 1: logger.info("1"); break;
+            case 2: logger.info("2"); break;
+            case 3: logger.info("2"); break;
+            case 4: logger.info("2"); break;
+            default: logger.info("other");
+        }
+
+        for (int i = 0; i < 1; i++) {
+
+            logger.info("Testing");
+        }                   // +1
+        while (flag ) {
+
+            logger.info("Hello");
+        }                                 // +1
+
+        return true;
+    }
+
+
 
 
 }
