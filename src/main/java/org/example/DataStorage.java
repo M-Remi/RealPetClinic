@@ -348,6 +348,72 @@ class DataStorage {
         return true;
     }
 
+    public int complexMethodB(int a, int b, int c, int d, boolean flag) {
+
+        if (a == 0) return 0;                            // +1
+        if (b == 1) return 1;                            // +1
+        if (c == 2) return 2;                            // +1
+        if (d == 3) return 3;                            // +1
+        if (a < b) logger.info("a < b");                 // +1
+
+        if (a > b) {                                     // +1
+            logger.info("a > b");
+        } else {
+            logger.info("a <= b");
+        }
+
+        if (b > a) {                                     // +1
+            logger.info("b > c");
+        } else {
+            logger.info("b <= c");
+        }
+
+        if (b > c) {                                     // +1
+            logger.info("b > c");
+        } else {
+            logger.info("b <= c");
+        }
+
+        if (c > d) {                                     // +1
+            logger.info("c > d");
+        } else {
+            logger.info("c <= d");
+        }
+
+        if ((a & 1) == 1 && (b & 1) == 1) {              // +1
+            logger.info("both odd");
+        }
+
+        if ((c & 1) == 0 || (d & 1) == 0) {              // +1
+            logger.info("one even");
+        }
+
+        switch (d) {                                     // +3
+            case 10: logger.info("d=10"); break;
+            case 11: logger.info("d=11"); break;
+            case 12: logger.info("d=12"); break;
+            case 13: logger.info("d=11"); break;
+            case 14: logger.info("d=12"); break;
+            default: logger.info("other");
+        }
+
+        for (int i = 0; i < 1; i++) {
+
+            logger.info("Testing!!");
+        }                   // +1
+        while (flag)
+        {
+            if (d>c)
+            {
+                logger.info("Just testing");
+
+            }
+
+        }                                 // +1
+
+        return -1;
+    }
+
 
 
 
