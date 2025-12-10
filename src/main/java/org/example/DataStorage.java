@@ -100,5 +100,125 @@ class DataStorage {
 
         }
     }
+
+// High Complexity
+public void complexIfElse(int a, int b, int c) {
+    if (a > 0) {
+        logger.info("A positive");
+        if (b > 0) {
+            logger.info("B positive");
+            if (c > 0) {
+                logger.info("C positive");
+            } else if (c == 0) {
+                logger.info("C zero");
+            } else {
+                logger.info("C negative");
+            }
+        } else if (b == 0) {
+            logger.info("B zero");
+        } else {
+            logger.info("B negative");
+        }
+    } else {
+        if (a == 0) {
+            logger.info("A zero");
+        } else {
+            logger.info("A negative");
+        }
+    }
+}
+public void complexLoops(int[] arr) {
+        for (int i = 0; i < arr.length; i++) {
+            logger.info("Outer loop i=" + i);
+            if (arr[i] % 2 == 0) {
+                logger.info("Even number");
+            } else {
+                logger.info("Odd number");
+            }
+
+            for (int j = 0; j < arr.length; j++) {
+                logger.info("Inner loop j=" + j);
+                if (arr[j] > arr[i]) {
+                    logger.info("arr[j] greater");
+                } else if (arr[j] == arr[i]) {
+                    logger.info("arr[j] equal");
+                } else {
+                    logger.info("arr[j] less");
+                }
+            }
+        }
+    }
+public void complexSwitch(String command) {
+        switch (command) {
+            case "start":
+                logger.info("Starting...");
+                break;
+            case "stop":
+                logger.info("Stopping...");
+                break;
+            case "pause":
+                logger.info("Pausing...");
+                break;
+            case "resume":
+                logger.info("Resuming...");
+                break;
+            case "restart":
+                logger.info("Restarting...");
+                break;
+            case "status":
+                logger.info("Status...");
+                break;
+            default:
+                logger.warning("Unknown command!");
+        }
+    }
+public int complexReturn(int x, int y) {
+        if (x < 0) {
+            logger.warning("X negative");
+            return -1;
+        }
+        if (y < 0) {
+            logger.warning("Y negative");
+            return -2;
+        }
+
+        if (x == y) {
+            logger.info("Equal");
+            return 0;
+        }
+
+        if (x > y && x % 2 == 0) {
+            logger.info("X larger and even");
+            return 1;
+        }
+
+        if (y > x && y % 2 != 0) {
+            logger.info("Y larger and odd");
+            return 2;
+        }
+
+        logger.info("Other case");
+        return 99;
+    }
+public boolean complexBoolean(int[][] matrix, int target) {
+        for (int i = 0; i < matrix.length; i++) {
+            logger.info("Row " + i);
+            for (int j = 0; j < matrix[i].length; j++) {
+                logger.info("Col " + j);
+
+                int value = matrix[i][j];
+
+                if ((value == target && i % 2 == 0) ||
+                        (value < target && j % 3 == 0) ||
+                        (value > target && (i + j) % 5 == 0))
+                {
+                    logger.info("Condition triggered at (" + i + "," + j + ")");
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
 }
 
