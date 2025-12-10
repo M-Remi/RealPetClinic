@@ -16,4 +16,7 @@
 *** 5 Long method code smell in PetService
 *** Method Names are:handleOrder,solveComplexFunction,calculateLoan,demoStructures,sortArray
 
-** Total Long method= 30
+*** 5 Long method code smell in Visit
+*** Method Names are:handleOrder,solveComplexFunction,calculateLoan,demoStructures,sortArray
+
+** Total Long method= 35
