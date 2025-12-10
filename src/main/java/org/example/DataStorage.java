@@ -110,6 +110,11 @@ class DataStorage {
         if (d == 0) logger.info("D == 0");                   // +1
         if (flag) logger.info("Flag true");                  // +1
 
+        if (c==d) {                                         // +1
+            logger.info("A > B");
+        } else {
+            logger.info("A <= B");
+        }
         if (c > d) {                                         // +1
             logger.info("A > B");
         } else {
@@ -179,6 +184,7 @@ class DataStorage {
     public void complexMethodA(int x, int y, int z, boolean f1, boolean f2) {
 
         if (x > 0) logger.info("x > 0");                 // +1
+        if (x > y) logger.info("x > 0");                 // +1
         if (y > 0) logger.info("y > 0");                 // +1
         if (z > 0) logger.info("z > 0");                 // +1
         if (f1) logger.info("f1 true");                  // +1
@@ -214,6 +220,12 @@ class DataStorage {
             case 3:
                 logger.info("x=3");
                 break;
+            case 4:
+                logger.info("x=3");
+                break;
+            case 5:
+                logger.info("x=3");
+                break;
             default:
                 logger.info("x other");
         }
@@ -227,104 +239,7 @@ class DataStorage {
             }
         }                                 // +1
     }
-    public int complexMethodB(int a, int b, int c, int d, boolean flag) {
 
-        if (a == 0) return 0;                            // +1
-        if (b == 1) return 1;                            // +1
-        if (c == 2) return 2;                            // +1
-        if (d == 3) return 3;                            // +1
-        if (a < b) logger.info("a < b");                 // +1
-
-        if (a > b) {                                     // +1
-            logger.info("a > b");
-        } else {
-            logger.info("a <= b");
-        }
-
-        if (b > c) {                                     // +1
-            logger.info("b > c");
-        } else {
-            logger.info("b <= c");
-        }
-
-        if (c > d) {                                     // +1
-            logger.info("c > d");
-        } else {
-            logger.info("c <= d");
-        }
-
-        if ((a & 1) == 1 && (b & 1) == 1) {              // +1
-            logger.info("both odd");
-        }
-
-        if ((c & 1) == 0 || (d & 1) == 0) {              // +1
-            logger.info("one even");
-        }
-
-        switch (d) {                                     // +3
-            case 10: logger.info("d=10"); break;
-            case 11: logger.info("d=11"); break;
-            case 12: logger.info("d=12"); break;
-            default: logger.info("other");
-        }
-
-        for (int i = 0; i < 1; i++) {
-
-            logger.info("Testing!!");
-        }                   // +1
-        while (flag)
-        {
-            if (d>c)
-            {
-                logger.info("Just testing");
-
-            }
-
-        }                                 // +1
-
-        return -1;
-    }
-    public boolean complexMethodC(int a, int b, int c, boolean flag) {
-
-        if (a > 10) logger.info(">10");                  // +1
-        if (b > 20) logger.info(">20");                  // +1
-        if (c > 30) logger.info(">30");                  // +1
-        if (a < 0) logger.info("<0");                    // +1
-        if (b < 0) logger.info("<0");                    // +1
-
-        if ((a > b) && (b > c)) logger.info("chain");    // +1
-        if ((a < b) || (c == a)) logger.info("or");      // +1
-
-        if (a == b) {                                    // +1
-            logger.info("a=b");
-        } else {
-            logger.info("a!=b");
-        }
-
-        if (b == c) {                                    // +1
-            logger.info("b=c");
-        } else {
-            logger.info("b!=c");
-        }
-
-        switch (c % 4) {                                 // +3
-            case 0: logger.info("0"); break;
-            case 1: logger.info("1"); break;
-            case 2: logger.info("2"); break;
-            default: logger.info("other");
-        }
-
-        for (int i = 0; i < 1; i++) {
-
-          logger.info("Testing");
-        }                   // +1
-        while (flag ) {
-
-            logger.info("Hello");
-        }                                 // +1
-
-        return true;
-    }
     public String complexMethodD(int p, int q, int r, boolean f) {
 
         if (p < 0) return "neg p";                       // +1
@@ -339,11 +254,24 @@ class DataStorage {
             logger.info("p<=q");
         }
 
+        if (q > p) {                                     // +1
+            logger.info("p>q");
+        } else {
+            logger.info("p<=q");
+        }
+
         if (q > r) {                                     // +1
             logger.info("q>r");
         } else {
             logger.info("q<=r");
         }
+
+        if (p > r) {                                     // +1
+            logger.info("q>r");
+        } else {
+            logger.info("q<=r");
+        }
+
 
         if ((p + q) > r && f) {                          // +1
             logger.info("sum>r");
@@ -357,6 +285,7 @@ class DataStorage {
             case 0: logger.info("0"); break;
             case 1: logger.info("1"); break;
             case 2: logger.info("2"); break;
+
             default: logger.info("other");
         }
 
@@ -371,9 +300,11 @@ class DataStorage {
 
         return "done";
     }
+
+
 }
 
 
 
-}
+
 
