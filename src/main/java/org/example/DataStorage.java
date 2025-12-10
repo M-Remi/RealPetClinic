@@ -175,56 +175,7 @@ public void complexSwitch(String command) {
                 logger.warning("Unknown command!");
         }
     }
-public int complexReturn(int x, int y) {
-        if (x < 0) {
-            logger.warning("X negative");
-            return -1;
-        }
-        if (y < 0) {
-            logger.warning("Y negative");
-            return -2;
-        }
 
-        if (x == y) {
-            logger.info("Equal");
-            return 0;
-        }
-
-        if (x > y && x % 2 == 0) {
-            logger.info("X larger and even");
-            return 1;
-        }
-
-        if (y > x && y % 2 != 0) {
-            logger.info("Y larger and odd");
-            return 2;
-        }
-
-        logger.info("Other case");
-        return 99;
-    }
-public boolean complexBoolean(int[][] matrix, int target) {
-        for (int i = 0; i < matrix.length; i++) {
-            message="Row " + i;
-            logger.info(message);
-            for (int j = 0; j < matrix[i].length; j++) {
-                message="Col " + j;
-                logger.info(message);
-
-                int value = matrix[i][j];
-
-                if ((value == target && i % 2 == 0) ||
-                        (value < target && j % 3 == 0) ||
-                        (value > target && (i + j) % 5 == 0))
-                {
-                    message="Condition triggered at (" + i + "," + j + ")";
-                    logger.info(message);
-                    return true;
-                }
-            }
-        }
-        return false;
-    }
 
 }
 
